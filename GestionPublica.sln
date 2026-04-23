@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionPublica.DALC", "GestionPublica.DALC\GestionPublica.DALC.csproj", "{8C9A9232-9F8C-475D-899B-A02DD667E710}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionPublica.BE", "GestionPublica.BE\GestionPublica.BE.csproj", "{240BF451-9658-44EF-ACAE-38B37798B921}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionPublica.BC", "GestionPublica.BC\GestionPublica.BC.csproj", "{4DD8E1BE-B60E-4112-8415-D4C35B5B39B5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8C9A9232-9F8C-475D-899B-A02DD667E710}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C9A9232-9F8C-475D-899B-A02DD667E710}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C9A9232-9F8C-475D-899B-A02DD667E710}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C9A9232-9F8C-475D-899B-A02DD667E710}.Release|Any CPU.Build.0 = Release|Any CPU
+		{240BF451-9658-44EF-ACAE-38B37798B921}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{240BF451-9658-44EF-ACAE-38B37798B921}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{240BF451-9658-44EF-ACAE-38B37798B921}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{240BF451-9658-44EF-ACAE-38B37798B921}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DD8E1BE-B60E-4112-8415-D4C35B5B39B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DD8E1BE-B60E-4112-8415-D4C35B5B39B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DD8E1BE-B60E-4112-8415-D4C35B5B39B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DD8E1BE-B60E-4112-8415-D4C35B5B39B5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
