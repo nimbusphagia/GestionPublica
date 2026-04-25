@@ -6,18 +6,20 @@ namespace GestionPublica.DALC;
 
 public class IncidenciaDALC
 {
-    public void Insertar(IncidenciaBE incidencia)
+    public int Insertar(IncidenciaBE incidencia)
     {
         using var con = Connection.GetConnection();
         var cmd = new SqlCommand(@"
-                INSERT INTO Incidencia (IdReserva, IdAdministrador, Tipo, Descripcion, Estado)
-                VALUES (@IdReserva, @IdAdministrador, @Tipo, @Descripcion, 'abierta')", con);
+        INSERT INTO Incidencia (IdReserva, IdAdministrador, Tipo, Descripcion, Estado)
+        VALUES (@IdReserva, @IdAdministrador, @Tipo, @Descripcion, 'abierta');
+        SELECT SCOPE_IDENTITY();", con);
 
         cmd.Parameters.AddWithValue("@IdReserva", incidencia.IdReserva);
         cmd.Parameters.AddWithValue("@IdAdministrador", incidencia.IdAdministrador);
         cmd.Parameters.AddWithValue("@Tipo", incidencia.Tipo);
         cmd.Parameters.AddWithValue("@Descripcion", incidencia.Descripcion);
-        cmd.ExecuteNonQuery();
+
+        return Convert.ToInt32(cmd.ExecuteScalar());
     }
 
     public IncidenciaBE ObtenerPorId(int id)

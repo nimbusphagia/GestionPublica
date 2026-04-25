@@ -16,20 +16,30 @@
   <component name="ChangeListManager">
     <list default="true" id="5af2ebb5-7218-4e37-bd53-f2c39f45bb61" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GestionPublica/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GestionPublica/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPublica.BE/EspacioBE.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.BE/EspacioBE.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPublica.DALC/GestionPublica.DALC.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.DALC/GestionPublica.DALC.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublic.GUI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublic.GUI/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.BC/Class1.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.BC/GestionPublica.BC.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.BC/GestionPublica.BC.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.DALC/IncidenciaDALC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.DALC/IncidenciaDALC.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/.microsoft/usersecrets/0cba3ed6-20ae-498a-b948-c2cb62689aab/secrets.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/GestionPublica.BC/Class1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GestionPublica.BC/EspacioBC.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GestionPublica.BC/IncidenciaBC.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GestionPublica.BC/InstalacionBC.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GestionPublica.BC/PenalidadBC.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GestionPublica.BC/ReservaBC.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GestionPublica.BC/UsuarioBC.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GestionPublica.BE/EspacioBE.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GestionPublica.BE/InstalacionBE.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GestionPublica.BE/PenalidadBE.cs" root0="FORCE_HIGHLIGHTING" />
@@ -57,6 +67,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.GestionPublic.GUI: http.executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
@@ -120,7 +131,8 @@
       <workItem from="1776979793543" duration="766000" />
       <workItem from="1776990806450" duration="3000" />
       <workItem from="1776992157429" duration="5145000" />
-      <workItem from="1777063459534" duration="3380000" />
+      <workItem from="1777063459534" duration="3843000" />
+      <workItem from="1777133503100" duration="1753000" />
     </task>
     <servers />
   </component>
