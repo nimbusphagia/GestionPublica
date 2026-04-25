@@ -1,0 +1,60 @@
+@model List<GestionPublica.BE.PenalidadBE>
+@{
+    Layout = "~/Views/Shared/_LayoutSuperadmin.cshtml";
+    ViewData["Title"] = "Penalidades";
+    var usuarios = ViewBag.Usuarios as Dictionary<int, string>;
+}
+
+<div class="page-header">
+    <div class="page-title">Gestión de Penalidades</div>
+    <div class="page-subtitle">Usuarios sancionados por incidencias acumuladas</div>
+</div>
+
+@if (TempData["Error"] != null)
+{
+    <div class="error-message">@TempData["Error"]</div>
+}
+
+<div class="table-card">
+    <div class="table-card-header">
+        <span class="table-card-title">Registro de penalidades</span>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Motivo</th>
+                <th>Inicio</th>
+                <th>Fin</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td>@(usuarios != null && usuarios.ContainsKey(p.IdUsuario) ? usuarios[p.IdUsuario] : "—")</td>
+                    <td>@p.Motivo</td>
+                    <td>@p.FechaInicio.ToString("dd/MM/yyyy")</td>
+                    <td>@p.FechaFin.ToString("dd/MM/yyyy")</td>
+                    <td><span class="badge badge-@p.Estado">@p.Estado</span></td>
+                    <td>
+                        @if (p.Estado == "activa")
+                        {
+                            <form method="post" action="/Superadmin/LevantarPenalidad">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="idUsuario" value="@p.IdUsuario"/>
+                                <button type="submit" class="btn btn-success">Levantar</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <span style="font-size: 0.8rem; color: #64748b;">Levantada</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

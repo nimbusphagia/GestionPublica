@@ -6,4 +6,8 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\GestionPublica.BC\GestionPublica.BC.csproj" />
+    </ItemGroup>
+
 </Project>

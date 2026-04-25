@@ -1,0 +1,131 @@
+@model List<GestionPublica.BE.InstalacionBE>
+@{
+    Layout = "~/Views/Shared/_LayoutSuperadmin.cshtml";
+    ViewData["Title"] = "Instalaciones";
+    var espacio = ViewBag.Espacio as GestionPublica.BE.EspacioBE;
+    var tipos = ViewBag.Tipos as List<GestionPublica.BE.TipoInstalacionBE>;
+}
+
+<div class="page-header">
+    <div class="page-title">Instalaciones — @espacio?.Nombre</div>
+    <div class="page-subtitle">@espacio?.Distrito · @espacio?.Direccion</div>
+</div>
+
+@if (TempData["Error"] != null)
+{
+    <div class="error-message">@TempData["Error"]</div>
+}
+
+<div style="margin-bottom: 1rem;">
+    <a href="/Superadmin/Espacios" class="btn btn-secondary">← Volver a espacios</a>
+</div>
+
+<div class="table-card">
+    <div class="table-card-header">
+        <span class="table-card-title">Instalaciones registradas</span>
+        <button class="btn btn-primary" onclick="abrirModal('modal-crear-instalacion')">+ Nueva instalación</button>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Capacidad</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var i in Model)
+        {
+            var tipoNombre = tipos?.FirstOrDefault(t => t.Id == i.IdTipoInstalacion)?.Nombre ?? "—";
+            <tr>
+                <td>@i.Nombre</td>
+                <td>@tipoNombre</td>
+                <td>@i.Capacidad personas</td>
+                <td><span class="badge badge-@i.Estado">@i.Estado</span></td>
+                <td style="display: flex; gap: 0.5rem;">
+                    @if (i.Estado != "disponible")
+                    {
+                        <form method="post" action="/Superadmin/ActualizarEstadoInstalacion">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="id" value="@i.Id"/>
+                            <input type="hidden" name="estado" value="disponible"/>
+                            <input type="hidden" name="idEspacio" value="@espacio.Id"/>
+                            <button type="submit" class="btn btn-success">Disponible</button>
+                        </form>
+                    }
+                    @if (i.Estado != "mantenimiento")
+                    {
+                        <form method="post" action="/Superadmin/ActualizarEstadoInstalacion">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="id" value="@i.Id"/>
+                            <input type="hidden" name="estado" value="mantenimiento"/>
+                            <input type="hidden" name="idEspacio" value="@espacio.Id"/>
+                            <button type="submit" class="btn btn-warning">Mantenimiento</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal crear instalación -->
+<div class="modal-overlay" id="modal-crear-instalacion">
+    <div class="modal">
+        <div class="modal-title">Nueva instalación</div>
+        <form method="post" action="/Superadmin/CrearInstalacion">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="IdEspacio" value="@espacio?.Id"/>
+            <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" name="Nombre" required/>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Tipo</label>
+                    <select name="IdTipoInstalacion" required>
+                        @foreach (var t in tipos ?? new List<GestionPublica.BE.TipoInstalacionBE>())
+                        {
+                            <option value="@t.Id">@t.Nombre</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Capacidad</label>
+                    <input type="number" name="Capacidad" min="1" required/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Descripción</label>
+                <input type="text" name="Descripcion"/>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn btn-secondary" onclick="cerrarModal('modal-crear-instalacion')">
+                    Cancelar
+                </button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function abrirModal(id) {
+            document.getElementById(id).classList.add('active');
+        }
+
+        function cerrarModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', e => {
+                if (e.target === overlay) overlay.classList.remove('active');
+            });
+        });
+    </script>
+}

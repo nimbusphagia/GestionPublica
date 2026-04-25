@@ -19,6 +19,7 @@ public class Connection
             InitialCatalog = config["DbSettings:Db"],
             UserID = config["DbSettings:UserId"],
             Password = config["DbSettings:Password"],
+            TrustServerCertificate = true
         };
 
         _connectionString = builder.ConnectionString;
@@ -29,5 +30,5 @@ public class Connection
         SqlConnection connection = new SqlConnection(_connectionString);
         connection.Open();
         return connection;
-    }  
+    }
 }

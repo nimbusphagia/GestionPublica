@@ -1,0 +1,43 @@
+@model List<GestionPublica.BE.UsuarioBE>
+@{
+    Layout = "~/Views/Shared/_LayoutSuperadmin.cshtml";
+    ViewData["Title"] = "Usuarios";
+}
+
+<div class="page-header">
+    <div class="page-title">Gestión de Usuarios</div>
+    <div class="page-subtitle">Monitoreo de cuentas registradas en el sistema</div>
+</div>
+
+<div class="table-card">
+    <div class="table-card-header">
+        <span class="table-card-title">Usuarios registrados (@Model.Count)</span>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>DNI</th>
+            <th>Correo</th>
+            <th>Teléfono</th>
+            <th>Rol</th>
+            <th>Estado</th>
+            <th>Registro</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var u in Model)
+        {
+            <tr>
+                <td>@u.Nombre @u.Apellido</td>
+                <td>@u.DNI</td>
+                <td>@u.Correo</td>
+                <td>@u.Telefono</td>
+                <td><span class="badge badge-@u.Rol">@u.Rol</span></td>
+                <td><span class="badge badge-@u.Estado">@u.Estado</span></td>
+                <td>@u.FechaRegistro.ToString("dd/MM/yyyy")</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
