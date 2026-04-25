@@ -16,9 +16,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5af2ebb5-7218-4e37-bd53-f2c39f45bb61" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GestionPublica/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GestionPublica/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPublica.BE/InstalacionBE.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.BE/InstalacionBE.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPublica.BE/ReservaBE.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.BE/ReservaBE.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPublica.BE/UsuarioBE.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.BE/UsuarioBE.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.BE/EspacioBE.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.BE/EspacioBE.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.DALC/GestionPublica.DALC.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.DALC/GestionPublica.DALC.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +35,14 @@
     <setting file="file://$PROJECT_DIR$/GestionPublica.BE/PenalidadBE.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GestionPublica.BE/ReservaBE.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GestionPublica.BE/TipoInstalacionBE.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GestionPublica.DALC/EspacioDALC.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GestionPublica.DALC/IncidenciaDALC.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GestionPublica.DALC/InstalacionDALC.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GestionPublica.DALC/PenalidadDALC.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GestionPublica.DALC/ReservaDALC.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GestionPublica.DALC/TipoActividadDALC.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GestionPublica.DALC/TipoInstalacionDALC.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GestionPublica.DALC/UsuarioDALC.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/global.json" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
@@ -113,7 +120,7 @@
       <workItem from="1776979793543" duration="766000" />
       <workItem from="1776990806450" duration="3000" />
       <workItem from="1776992157429" duration="5145000" />
-      <workItem from="1777063459534" duration="905000" />
+      <workItem from="1777063459534" duration="3380000" />
     </task>
     <servers />
   </component>

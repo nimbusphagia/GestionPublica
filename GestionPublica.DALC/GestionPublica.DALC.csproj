@@ -12,4 +12,8 @@
       <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.7" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\GestionPublica.BE\GestionPublica.BE.csproj" />
+    </ItemGroup>
+
 </Project>
