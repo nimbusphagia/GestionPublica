@@ -1,0 +1,96 @@
+@model List<GestionPublica.BE.ReservaBE>
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Solicitudes";
+    var tipos = ViewBag.Tipos as Dictionary<int, string>;
+    var usuarios = ViewBag.Usuarios as Dictionary<int, string>;
+}
+
+<div class="page-header">
+    <div class="page-title">Solicitudes pendientes</div>
+    <div class="page-subtitle">Reservas esperando aprobación</div>
+</div>
+
+@if (TempData["Error"] != null)
+{
+    <div class="error-message">@TempData["Error"]</div>
+}
+
+<div class="table-card">
+    <div class="table-card-header">
+        <span class="table-card-title">Pendientes (@Model.Count)</span>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Ciudadano</th>
+                <th>Actividad</th>
+                <th>Fecha uso</th>
+                <th>Horario</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var r in Model)
+            {
+                <tr>
+                    <td>@(usuarios != null && usuarios.ContainsKey(r.IdUsuario) ? usuarios[r.IdUsuario] : "—")</td>
+                    <td>@(tipos != null && tipos.ContainsKey(r.IdTipoActividad) ? tipos[r.IdTipoActividad] : "—")</td>
+                    <td>@r.FechaUso.ToString("dd/MM/yyyy")</td>
+                    <td>@r.HoraInicio.ToString(@"hh\:mm") — @r.HoraFin.ToString(@"hh\:mm")</td>
+                    <td>@r.DescActividad</td>
+                    <td style="display: flex; gap: 0.5rem;">
+                        <form method="post" action="/Administrador/Aprobar">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="id" value="@r.Id"/>
+                            <button type="submit" class="btn btn-success">Aprobar</button>
+                        </form>
+                        <button class="btn btn-danger"
+                            onclick="abrirModalRechazo(@r.Id)">
+                            Rechazar
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal rechazo -->
+<div class="modal-overlay" id="modal-rechazo">
+    <div class="modal">
+        <div class="modal-title">Motivo de rechazo</div>
+        <form method="post" action="/Administrador/Rechazar">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="id" id="rechazo-id"/>
+            <div class="form-group">
+                <label>Motivo</label>
+                <textarea name="motivo" rows="4" required
+                    placeholder="Describe el motivo del rechazo..."></textarea>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn btn-secondary"
+                    onclick="cerrarModal('modal-rechazo')">Cancelar</button>
+                <button type="submit" class="btn btn-danger">Confirmar rechazo</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    function abrirModalRechazo(id) {
+        document.getElementById('rechazo-id').value = id;
+        document.getElementById('modal-rechazo').classList.add('active');
+    }
+    function cerrarModal(id) {
+        document.getElementById(id).classList.remove('active');
+    }
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+        overlay.addEventListener('click', e => {
+            if (e.target === overlay) overlay.classList.remove('active');
+        });
+    });
+</script>
+}

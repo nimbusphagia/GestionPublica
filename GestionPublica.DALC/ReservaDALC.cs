@@ -48,6 +48,17 @@ public class ReservaDALC
         return lista;
     }
 
+    public List<ReservaBE> ObtenerAprobadas()
+    {
+        using var con = Connection.GetConnection();
+        var cmd = new SqlCommand(
+            "SELECT * FROM Reserva WHERE Estado = 'aprobada' ORDER BY FechaUso ASC", con);
+        var lista = new List<ReservaBE>();
+        using var reader = cmd.ExecuteReader();
+        while (reader.Read()) lista.Add(MapearReserva(reader));
+        return lista;
+    }
+
     public List<ReservaBE> ObtenerPendientes()
     {
         using var con = Connection.GetConnection();

@@ -3,27 +3,28 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@ViewData["Title"] — SisGEP</title>
+    <title>@ViewData["Title"] — GestionPublica</title>
     <link rel="stylesheet" href="~/css/admin.css"/>
 </head>
 <body>
 <aside class="sidebar">
     <div class="sidebar-brand">
-        <div class="system-name">SisGEP</div>
+        <div class="system-name">GestionPublica</div>
         <div class="role-label">Panel Superadmin</div>
     </div>
     <nav class="sidebar-nav">
         <a href="/Superadmin/Index" class="nav-item @(ViewData["Active"]?.ToString() == "dashboard" ? "active" : "")">
-            <span class="nav-icon">⊞</span> Dashboard
+            Dashboard
         </a>
         <a href="/Superadmin/Espacios" class="nav-item @(ViewData["Active"]?.ToString() == "espacios" ? "active" : "")">
-            <span class="nav-icon">🌳</span> Espacios
+            Espacios
         </a>
-        <a href="/Superadmin/Penalidades" class="nav-item @(ViewData["Active"]?.ToString() == "penalidades" ? "active" : "")">
-            <span class="nav-icon">⛔</span> Penalidades
+        <a href="/Superadmin/Penalidades"
+           class="nav-item @(ViewData["Active"]?.ToString() == "penalidades" ? "active" : "")">
+            Penalidades
         </a>
         <a href="/Superadmin/Usuarios" class="nav-item @(ViewData["Active"]?.ToString() == "usuarios" ? "active" : "")">
-            <span class="nav-icon">👤</span> Usuarios
+            Usuarios
         </a>
     </nav>
     <div class="sidebar-footer">

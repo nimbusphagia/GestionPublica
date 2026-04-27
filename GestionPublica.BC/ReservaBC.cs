@@ -108,4 +108,9 @@ public class ReservaBC
 
         _reservaDALC.Finalizar(id);
     }
+
+    public List<ReservaBE> ObtenerAprobadas()
+    {
+        return _reservaDALC.ObtenerAprobadas();
+    }
 }

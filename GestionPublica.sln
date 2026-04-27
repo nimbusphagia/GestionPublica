@@ -6,7 +6,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionPublica.BE", "Gestio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionPublica.BC", "GestionPublica.BC\GestionPublica.BC.csproj", "{4DD8E1BE-B60E-4112-8415-D4C35B5B39B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionPublic.GUI", "GestionPublic.GUI\GestionPublic.GUI.csproj", "{4899316F-DA2F-41C7-BBCC-EB422DD05F34}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionPublica.GUI", "GestionPublica.GUI\GestionPublica.GUI.csproj", "{4899316F-DA2F-41C7-BBCC-EB422DD05F34}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,0 +1,94 @@
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Incidencias";
+    var finalizadas = ViewBag.FinalizadasSinIncidencia as List<GestionPublica.BE.ReservaBE>;
+    var usuarios = ViewBag.Usuarios as Dictionary<int, string>;
+}
+
+<div class="page-header">
+    <div class="page-title">Incidencias</div>
+    <div class="page-subtitle">Registra incidencias en reservas finalizadas</div>
+</div>
+
+@if (TempData["Error"] != null)
+{
+    <div class="error-message">@TempData["Error"]</div>
+}
+
+<div class="table-card">
+    <div class="table-card-header">
+        <span class="table-card-title">Reservas finalizadas sin incidencia (@(finalizadas?.Count ?? 0))</span>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Ciudadano</th>
+                <th>Fecha uso</th>
+                <th>Horario</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var r in finalizadas ?? new List<GestionPublica.BE.ReservaBE>())
+            {
+                <tr>
+                    <td>@(usuarios != null && usuarios.ContainsKey(r.IdUsuario) ? usuarios[r.IdUsuario] : "—")</td>
+                    <td>@r.FechaUso.ToString("dd/MM/yyyy")</td>
+                    <td>@r.HoraInicio.ToString(@"hh\:mm") — @r.HoraFin.ToString(@"hh\:mm")</td>
+                    <td>
+                        <button class="btn btn-warning"
+                            onclick="abrirModalIncidencia(@r.Id)">
+                            Registrar incidencia
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal registrar incidencia -->
+<div class="modal-overlay" id="modal-incidencia">
+    <div class="modal">
+        <div class="modal-title">Registrar incidencia</div>
+        <form method="post" action="/Administrador/RegistrarIncidencia">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="idReserva" id="incidencia-reserva-id"/>
+            <div class="form-group">
+                <label>Tipo</label>
+                <select name="tipo" required>
+                    <option value="dano fisico">Daño físico</option>
+                    <option value="desorden">Desorden</option>
+                    <option value="uso indebido">Uso indebido</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Descripción</label>
+                <textarea name="descripcion" rows="4" required
+                    placeholder="Describe la incidencia registrada..."></textarea>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn btn-secondary"
+                    onclick="cerrarModal('modal-incidencia')">Cancelar</button>
+                <button type="submit" class="btn btn-warning">Registrar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    function abrirModalIncidencia(id) {
+        document.getElementById('incidencia-reserva-id').value = id;
+        document.getElementById('modal-incidencia').classList.add('active');
+    }
+    function cerrarModal(id) {
+        document.getElementById(id).classList.remove('active');
+    }
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+        overlay.addEventListener('click', e => {
+            if (e.target === overlay) overlay.classList.remove('active');
+        });
+    });
+</script>
+}

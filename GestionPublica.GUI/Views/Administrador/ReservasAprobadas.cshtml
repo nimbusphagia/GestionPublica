@@ -1,0 +1,61 @@
+@model List<GestionPublica.BE.ReservaBE>
+@{
+Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+ViewData["Title"] = "Reservas aprobadas";
+var tipos = ViewBag.Tipos as Dictionary<int, string>;
+var usuarios = ViewBag.Usuarios as Dictionary<int, string>;
+}
+
+<div class="page-header">
+    <div class="page-title">Reservas aprobadas</div>
+    <div class="page-subtitle">Finaliza las reservas cuya fecha y hora ya pasaron</div>
+</div>
+
+@if (TempData["Error"] != null)
+{
+<div class="error-message">@TempData["Error"]</div>
+}
+
+<div class="table-card">
+    <div class="table-card-header">
+        <span class="table-card-title">Aprobadas (@Model.Count)</span>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Ciudadano</th>
+            <th>Actividad</th>
+            <th>Fecha uso</th>
+            <th>Horario</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var r in Model)
+        {
+        var yaTermino = r.FechaUso.Date < DateTime.Today ||
+        (r.FechaUso.Date == DateTime.Today && r.HoraFin < DateTime.Now.TimeOfDay);
+        <tr>
+            <td>@(usuarios != null && usuarios.ContainsKey(r.IdUsuario) ? usuarios[r.IdUsuario] : "—")</td>
+            <td>@(tipos != null && tipos.ContainsKey(r.IdTipoActividad) ? tipos[r.IdTipoActividad] : "—")</td>
+            <td>@r.FechaUso.ToString("dd/MM/yyyy")</td>
+            <td>@r.HoraInicio.ToString(@"hh\:mm") — @r.HoraFin.ToString(@"hh\:mm")</td>
+            <td>
+                @if (yaTermino)
+                {
+                <form method="post" action="/Administrador/Finalizar">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="id" value="@r.Id"/>
+                    <button type="submit" class="btn btn-primary">Finalizar</button>
+                </form>
+                }
+                else
+                {
+                <span style="font-size: 0.8rem; color: #64748b;">Aún no ha concluido</span>
+                }
+            </td>
+        </tr>
+        }
+        </tbody>
+    </table>
+</div>

@@ -4,7 +4,7 @@ using GestionPublica.DALC;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GestionPublic.GUI.Controllers;
+namespace GestionPublica.GUI.Controllers;
 
 [Authorize(Roles = "superadmin")]
 public class SuperadminController : Controller
