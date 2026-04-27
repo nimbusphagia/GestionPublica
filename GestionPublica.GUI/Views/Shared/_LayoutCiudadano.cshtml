@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] — GestionPublica</title>
+    <link rel="stylesheet" href="~/css/ciudadano.css"/>
+</head>
+<body>
+<nav class="navbar">
+    <div class="navbar-brand">GestionPublica</div>
+    <div class="navbar-links">
+        <a href="/Ciudadano/Index"
+           class="nav-link @(ViewData["Active"]?.ToString() == "dashboard" ? "active" : "")">
+            Inicio
+        </a>
+        <a href="/Ciudadano/BuscarInstalaciones"
+           class="nav-link @(ViewData["Active"]?.ToString() == "buscar" ? "active" : "")">
+            Buscar instalaciones
+        </a>
+        <a href="/Ciudadano/MisReservas"
+           class="nav-link @(ViewData["Active"]?.ToString() == "reservas" ? "active" : "")">
+            Mis reservas
+        </a>
+    </div>
+    <div class="navbar-user">
+        <span>@User.Identity.Name</span>
+        <form method="post" action="/Auth/Logout">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn-logout">Cerrar sesión</button>
+        </form>
+    </div>
+</nav>
+<div class="main-content">
+    @RenderBody()
+</div>
+@RenderSection("Scripts", required: false)
+</body>
+</html>

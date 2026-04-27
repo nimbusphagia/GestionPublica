@@ -1,0 +1,70 @@
+@{
+    Layout = "~/Views/Shared/_LayoutCiudadano.cshtml";
+    ViewData["Title"] = "Buscar instalaciones";
+    var instalaciones = ViewBag.Instalaciones as List<GestionPublica.BE.InstalacionBE>;
+    var espacios = ViewBag.Espacios as Dictionary<int, GestionPublica.BE.EspacioBE>;
+    var tiposDict = ViewBag.TiposDict as Dictionary<int, string>;
+}
+
+<div class="page-header">
+    <div class="page-title">Buscar instalaciones</div>
+    <div class="page-subtitle">Selecciona una fecha para ver disponibilidad</div>
+</div>
+
+@if (ViewBag.Error != null)
+{
+    <div class="error-message">@ViewBag.Error</div>
+}
+
+<div class="filtros-card">
+    <form method="get" action="/Ciudadano/BuscarInstalaciones" style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: flex-end; width: 100%;">
+        <div class="form-group">
+            <label>Fecha de uso</label>
+            <input type="date" name="fecha" value="@ViewBag.Fecha"
+                   min="@DateTime.Today.AddDays(1).ToString("yyyy-MM-dd")" required/>
+        </div>
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+</div>
+
+@if (instalaciones != null)
+{
+    <div style="font-size: 0.85rem; color: #64748b; margin-bottom: 1rem;">
+        @instalaciones.Count instalacion(es) disponible(s) para @DateTime.Parse(ViewBag.Fecha).ToString("dd/MM/yyyy")
+    </div>
+
+    @if (instalaciones.Count == 0)
+    {
+        <div class="table-card" style="padding: 2rem; text-align: center; color: #64748b;">
+            No hay instalaciones disponibles para esa fecha.
+        </div>
+    }
+    else
+    {
+        <div class="instalaciones-grid">
+            @foreach (var i in instalaciones)
+            {
+                var espacio = espacios != null && espacios.ContainsKey(i.IdEspacio) ? espacios[i.IdEspacio] : null;
+                var tipoNombre = tiposDict != null && tiposDict.ContainsKey(i.IdTipoInstalacion) ? tiposDict[i.IdTipoInstalacion] : "—";
+                <div class="instalacion-card">
+                    <div class="instalacion-card-nombre">@i.Nombre</div>
+                    <div class="instalacion-card-detalle">@tipoNombre</div>
+                    @if (espacio != null)
+                    {
+                        <div class="instalacion-card-detalle">@espacio.Nombre — @espacio.Distrito</div>
+                        <div class="instalacion-card-detalle">
+                            Horario: @espacio.HoraApertura.ToString(@"hh\:mm") — @espacio.HoraCierre.ToString(@"hh\:mm")
+                        </div>
+                    }
+                    <div class="instalacion-card-detalle">Capacidad: @i.Capacidad personas</div>
+                    <div class="instalacion-card-footer">
+                        <a href="/Ciudadano/NuevaReserva?idInstalacion=@i.Id&fecha=@ViewBag.Fecha"
+                           class="btn btn-primary" style="width: 100%; text-align: center;">
+                            Reservar
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+}

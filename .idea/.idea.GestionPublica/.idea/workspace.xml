@@ -15,28 +15,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5af2ebb5-7218-4e37-bd53-f2c39f45bb61" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/GestionPublica.GUI/Controllers/AuthController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GestionPublica/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GestionPublica/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPublic.GUI/Controllers/AuthController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPublic.GUI/Controllers/SuperadminController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/Controllers/SuperadminController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPublic.GUI/GestionPublic.GUI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/GestionPublica.GUI.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPublic.GUI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPublic.GUI/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/Properties/launchSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPublic.GUI/Views/Auth/Login.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/Views/Auth/Login.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPublic.GUI/Views/Auth/Registro.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/Views/Auth/Registro.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPublic.GUI/Views/Shared/_LayoutSuperadmin.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/Views/Shared/_LayoutSuperadmin.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPublic.GUI/Views/Superadmin/Espacios.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/Views/Superadmin/Espacios.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPublic.GUI/Views/Superadmin/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/Views/Superadmin/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPublic.GUI/Views/Superadmin/Instalaciones.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/Views/Superadmin/Instalaciones.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPublic.GUI/Views/Superadmin/Penalidades.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/Views/Superadmin/Penalidades.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPublic.GUI/Views/Superadmin/Usuarios.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/Views/Superadmin/Usuarios.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPublic.GUI/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPublic.GUI/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/appsettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPublic.GUI/wwwroot/css/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/wwwroot/css/admin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPublic.GUI/wwwroot/css/auth.css" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/wwwroot/css/auth.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPublica.BC/ReservaBC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.BC/ReservaBC.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPublica.DALC/ReservaDALC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.DALC/ReservaDALC.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPublica.sln" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.GUI/Views/Auth/Login.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/Views/Auth/Login.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +51,7 @@
     <setting file="file://$PROJECT_DIR$/GestionPublica.DALC/TipoInstalacionDALC.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GestionPublica.DALC/UsuarioDALC.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/GestionPublica.GUI/Controllers/AdministradorController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GestionPublica.GUI/Controllers/CiudadanoController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/global.json" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
@@ -161,7 +142,7 @@
       <workItem from="1777152813016" duration="1730000" />
       <workItem from="1777154575779" duration="954000" />
       <workItem from="1777155615532" duration="104000" />
-      <workItem from="1777254415842" duration="2520000" />
+      <workItem from="1777254415842" duration="3479000" />
     </task>
     <servers />
   </component>

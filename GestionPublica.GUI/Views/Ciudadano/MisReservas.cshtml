@@ -1,0 +1,67 @@
+@model List<GestionPublica.BE.ReservaBE>
+@{
+    Layout = "~/Views/Shared/_LayoutCiudadano.cshtml";
+    ViewData["Title"] = "Mis reservas";
+    var tipos = ViewBag.Tipos as Dictionary<int, string>;
+}
+
+<div class="page-header">
+    <div class="page-title">Mis reservas</div>
+    <div class="page-subtitle">Historial y estado de tus solicitudes</div>
+</div>
+
+@if (TempData["Error"] != null)
+{
+    <div class="error-message">@TempData["Error"]</div>
+}
+@if (TempData["Success"] != null)
+{
+    <div class="success-message">@TempData["Success"]</div>
+}
+
+<div class="table-card">
+    <div class="table-card-header">
+        <span class="table-card-title">Reservas (@Model.Count)</span>
+        <a href="/Ciudadano/BuscarInstalaciones" class="btn btn-primary">+ Nueva reserva</a>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Actividad</th>
+            <th>Fecha uso</th>
+            <th>Horario</th>
+            <th>Estado</th>
+            <th>Motivo rechazo</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var r in Model)
+        {
+            <tr>
+                <td>@(tipos != null && tipos.ContainsKey(r.IdTipoActividad) ? tipos[r.IdTipoActividad] : "—")</td>
+                <td>@r.FechaUso.ToString("dd/MM/yyyy")</td>
+                <td>@r.HoraInicio.ToString(@"hh\:mm") — @r.HoraFin.ToString(@"hh\:mm")</td>
+                <td><span class="badge badge-@r.Estado">@r.Estado</span></td>
+                <td style="font-size: 0.82rem; color: #64748b;">
+                    @(r.MotivoRechazo ?? "—")
+                </td>
+                <td>
+                    @if (r.Estado == "pendiente" || r.Estado == "aprobada")
+                    {
+                        <form method="post" action="/Ciudadano/Cancelar">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="id" value="@r.Id"/>
+                            <button type="submit" class="btn btn-danger">Cancelar</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <span style="font-size: 0.8rem; color: #64748b;">—</span>
+                    }
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

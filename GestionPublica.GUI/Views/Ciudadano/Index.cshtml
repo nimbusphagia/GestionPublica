@@ -1,0 +1,40 @@
+@{
+    Layout = "~/Views/Shared/_LayoutCiudadano.cshtml";
+    ViewData["Title"] = "Inicio";
+    var ultimaReserva = ViewBag.UltimaReserva as GestionPublica.BE.ReservaBE;
+}
+
+<div class="page-header">
+    <div class="page-title">Bienvenido, @User.Identity.Name</div>
+    <div class="page-subtitle">Gestiona tus reservas de espacios públicos</div>
+</div>
+
+@if (TempData["Error"] != null)
+{
+    <div class="error-message">@TempData["Error"]</div>
+}
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-label">Total reservas</div>
+        <div class="stat-value">@ViewBag.TotalReservas</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">Pendientes</div>
+        <div class="stat-value warning">@ViewBag.Pendientes</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-label">Aprobadas</div>
+        <div class="stat-value success">@ViewBag.Aprobadas</div>
+    </div>
+</div>
+
+<div class="table-card">
+    <div class="table-card-header">
+        <span class="table-card-title">Acciones rápidas</span>
+    </div>
+    <div style="padding: 1.25rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+        <a href="/Ciudadano/BuscarInstalaciones" class="btn btn-primary">Hacer una reserva</a>
+        <a href="/Ciudadano/MisReservas" class="btn btn-secondary">Ver mis reservas</a>
+    </div>
+</div>

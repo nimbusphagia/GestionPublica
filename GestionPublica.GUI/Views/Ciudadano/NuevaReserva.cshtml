@@ -1,0 +1,78 @@
+@{
+    Layout = "~/Views/Shared/_LayoutCiudadano.cshtml";
+    ViewData["Title"] = "Nueva reserva";
+    var instalacion = ViewBag.Instalacion as GestionPublica.BE.InstalacionBE;
+    var espacio = ViewBag.Espacio as GestionPublica.BE.EspacioBE;
+    var tipos = ViewBag.Tipos as List<GestionPublica.BE.TipoActividadBE>;
+}
+
+<div class="page-header">
+    <div class="page-title">Nueva reserva</div>
+    <div class="page-subtitle">Completa los datos para enviar tu solicitud</div>
+</div>
+
+@if (TempData["Error"] != null)
+{
+    <div class="error-message">@TempData["Error"]</div>
+}
+
+<div style="margin-bottom: 1rem;">
+    <a href="/Ciudadano/BuscarInstalaciones?fecha=@ViewBag.Fecha" class="btn btn-secondary">← Volver</a>
+</div>
+
+<div class="form-card">
+    <div class="form-group">
+        <label>Instalación</label>
+        <div class="form-info">@instalacion?.Nombre</div>
+    </div>
+    <div class="form-group">
+        <label>Espacio</label>
+        <div class="form-info">@espacio?.Nombre — @espacio?.Distrito</div>
+    </div>
+    <div class="form-group">
+        <label>Horario disponible</label>
+        <div class="form-info">
+            @espacio?.HoraApertura.ToString(@"hh\:mm") — @espacio?.HoraCierre.ToString(@"hh\:mm")
+        </div>
+    </div>
+
+    <form method="post" action="/Ciudadano/CrearReserva">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="idInstalacion" value="@instalacion?.Id"/>
+        <input type="hidden" name="fechaUso" value="@ViewBag.Fecha"/>
+
+        <div class="form-group">
+            <label>Fecha de uso</label>
+            <div class="form-info">@DateTime.Parse(ViewBag.Fecha).ToString("dd/MM/yyyy")</div>
+        </div>
+        <div class="form-row">
+            <div class="form-group">
+                <label>Hora inicio</label>
+                <input type="time" name="horaInicio"
+                       min="@espacio?.HoraApertura.ToString(@"hh\:mm")"
+                       max="@espacio?.HoraCierre.ToString(@"hh\:mm")" required/>
+            </div>
+            <div class="form-group">
+                <label>Hora fin</label>
+                <input type="time" name="horaFin"
+                       min="@espacio?.HoraApertura.ToString(@"hh\:mm")"
+                       max="@espacio?.HoraCierre.ToString(@"hh\:mm")" required/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Tipo de actividad</label>
+            <select name="idTipoActividad" required>
+                @foreach (var t in tipos ?? new List<GestionPublica.BE.TipoActividadBE>())
+                {
+                    <option value="@t.Id">@t.Nombre</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Descripción de la actividad</label>
+            <textarea name="descActividad" rows="3"
+                placeholder="Describe brevemente qué actividad realizarás..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar solicitud</button>
+    </form>
+</div>
