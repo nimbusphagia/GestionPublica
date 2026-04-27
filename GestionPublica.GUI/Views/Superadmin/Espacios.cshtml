@@ -21,54 +21,61 @@
     </div>
     <table>
         <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Distrito</th>
-                <th>Horario</th>
-                <th>Estado</th>
-                <th>Acciones</th>
-            </tr>
+        <tr>
+            <th>Nombre</th>
+            <th>Distrito</th>
+            <th>Horario</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
         </thead>
         <tbody>
-            @foreach (var e in Model)
-            {
-                <tr>
-                    <td>@e.Nombre</td>
-                    <td>@e.Distrito</td>
-                    <td>@e.HoraApertura.ToString(@"hh\:mm") — @e.HoraCierre.ToString(@"hh\:mm")</td>
-                    <td><span class="badge badge-@e.Estado">@e.Estado</span></td>
-                    <td style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                        <a href="/Superadmin/Instalaciones?idEspacio=@e.Id" class="btn btn-secondary">Instalaciones</a>
-                        @if (e.Estado != "activo")
-                        {
-                            <form method="post" action="/Superadmin/ActualizarEstadoEspacio">
-                                @Html.AntiForgeryToken()
-                                <input type="hidden" name="id" value="@e.Id"/>
-                                <input type="hidden" name="estado" value="activo"/>
-                                <button type="submit" class="btn btn-success">Activar</button>
-                            </form>
-                        }
-                        @if (e.Estado != "mantenimiento")
-                        {
-                            <form method="post" action="/Superadmin/ActualizarEstadoEspacio">
-                                @Html.AntiForgeryToken()
-                                <input type="hidden" name="id" value="@e.Id"/>
-                                <input type="hidden" name="estado" value="mantenimiento"/>
-                                <button type="submit" class="btn btn-warning">Mantenimiento</button>
-                            </form>
-                        }
-                        @if (e.Estado != "cerrado")
-                        {
-                            <form method="post" action="/Superadmin/ActualizarEstadoEspacio">
-                                @Html.AntiForgeryToken()
-                                <input type="hidden" name="id" value="@e.Id"/>
-                                <input type="hidden" name="estado" value="cerrado"/>
-                                <button type="submit" class="btn btn-danger">Cerrar</button>
-                            </form>
-                        }
-                    </td>
-                </tr>
-            }
+        @foreach (var e in Model)
+        {
+            <tr>
+                <td>@e.Nombre</td>
+                <td>@e.Distrito</td>
+                <td>@e.HoraApertura.ToString(@"hh\:mm") — @e.HoraCierre.ToString(@"hh\:mm")</td>
+                <td><span class="badge badge-@e.Estado">@e.Estado</span></td>
+                <td style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <a href="/Superadmin/Instalaciones?idEspacio=@e.Id" class="btn btn-secondary">Instalaciones</a>
+                    <button class="btn btn-secondary"
+                            onclick="abrirModalEditar(@e.Id, '@e.Nombre', '@e.Direccion', '@e.Distrito',
+                            '@(e.Descripcion ?? "")',
+                            '@e.HoraApertura.ToString(@"hh\:mm")',
+                            '@e.HoraCierre.ToString(@"hh\:mm")')">
+                        Editar
+                    </button>
+                    @if (e.Estado != "activo")
+                    {
+                        <form method="post" action="/Superadmin/ActualizarEstadoEspacio">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="id" value="@e.Id"/>
+                            <input type="hidden" name="estado" value="activo"/>
+                            <button type="submit" class="btn btn-success">Activar</button>
+                        </form>
+                    }
+                    @if (e.Estado != "mantenimiento")
+                    {
+                        <form method="post" action="/Superadmin/ActualizarEstadoEspacio">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="id" value="@e.Id"/>
+                            <input type="hidden" name="estado" value="mantenimiento"/>
+                            <button type="submit" class="btn btn-warning">Mantenimiento</button>
+                        </form>
+                    }
+                    @if (e.Estado != "cerrado")
+                    {
+                        <form method="post" action="/Superadmin/ActualizarEstadoEspacio">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="id" value="@e.Id"/>
+                            <input type="hidden" name="estado" value="cerrado"/>
+                            <button type="submit" class="btn btn-danger">Cerrar</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
         </tbody>
     </table>
 </div>
@@ -108,21 +115,84 @@
                 </div>
             </div>
             <div class="modal-actions">
-                <button type="button" class="btn btn-secondary" onclick="cerrarModal('modal-crear-espacio')">Cancelar</button>
+                <button type="button" class="btn btn-secondary" onclick="cerrarModal('modal-crear-espacio')">Cancelar
+                </button>
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
         </form>
     </div>
 </div>
 
+<!-- Modal editar espacio -->
+<div class="modal-overlay" id="modal-editar-espacio">
+    <div class="modal">
+        <div class="modal-title">Editar espacio</div>
+        <form method="post" action="/Superadmin/EditarEspacio">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="Id" id="editar-id"/>
+            <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" name="Nombre" id="editar-nombre" required/>
+            </div>
+            <div class="form-group">
+                <label>Dirección</label>
+                <input type="text" name="Direccion" id="editar-direccion" required/>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Distrito</label>
+                    <input type="text" name="Distrito" id="editar-distrito" required/>
+                </div>
+                <div class="form-group">
+                    <label>Descripción</label>
+                    <input type="text" name="Descripcion" id="editar-descripcion"/>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Hora apertura</label>
+                    <input type="time" name="HoraApertura" id="editar-apertura" required/>
+                </div>
+                <div class="form-group">
+                    <label>Hora cierre</label>
+                    <input type="time" name="HoraCierre" id="editar-cierre" required/>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn btn-secondary"
+                        onclick="cerrarModal('modal-editar-espacio')">Cancelar
+                </button>
+                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 @section Scripts {
-<script>
-    function abrirModal(id) { document.getElementById(id).classList.add('active'); }
-    function cerrarModal(id) { document.getElementById(id).classList.remove('active'); }
-    document.querySelectorAll('.modal-overlay').forEach(overlay => {
-        overlay.addEventListener('click', e => {
-            if (e.target === overlay) overlay.classList.remove('active');
+    <script>
+        function abrirModal(id) {
+            document.getElementById(id).classList.add('active');
+        }
+
+        function cerrarModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', e => {
+                if (e.target === overlay) overlay.classList.remove('active');
+            });
         });
-    });
-</script>
+
+        function abrirModalEditar(id, nombre, direccion, distrito, descripcion, apertura, cierre) {
+            document.getElementById('editar-id').value = id;
+            document.getElementById('editar-nombre').value = nombre;
+            document.getElementById('editar-direccion').value = direccion;
+            document.getElementById('editar-distrito').value = distrito;
+            document.getElementById('editar-descripcion').value = descripcion;
+            document.getElementById('editar-apertura').value = apertura;
+            document.getElementById('editar-cierre').value = cierre;
+            abrirModal('modal-editar-espacio');
+        }
+    </script>
 }

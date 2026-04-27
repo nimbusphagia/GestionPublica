@@ -63,7 +63,28 @@ public class EspacioDALC
         cmd.Parameters.AddWithValue("@Id", id);
         cmd.ExecuteNonQuery();
     }
+    public void Actualizar(EspacioBE espacio)
+    {
+        using var con = Connection.GetConnection();
+        var cmd = new SqlCommand(@"
+        UPDATE Espacio 
+        SET Nombre = @Nombre,
+            Direccion = @Direccion,
+            Distrito = @Distrito,
+            Descripcion = @Descripcion,
+            HoraApertura = @HoraApertura,
+            HoraCierre = @HoraCierre
+        WHERE Id = @Id", con);
 
+        cmd.Parameters.AddWithValue("@Nombre", espacio.Nombre);
+        cmd.Parameters.AddWithValue("@Direccion", espacio.Direccion);
+        cmd.Parameters.AddWithValue("@Distrito", espacio.Distrito);
+        cmd.Parameters.AddWithValue("@Descripcion", (object)espacio.Descripcion ?? DBNull.Value);
+        cmd.Parameters.AddWithValue("@HoraApertura", espacio.HoraApertura);
+        cmd.Parameters.AddWithValue("@HoraCierre", espacio.HoraCierre);
+        cmd.Parameters.AddWithValue("@Id", espacio.Id);
+        cmd.ExecuteNonQuery();
+    }
     private EspacioBE MapearEspacio(SqlDataReader reader)
     {
         return new EspacioBE

@@ -35,7 +35,18 @@ public class EspacioBC
     public void ActualizarEstado(int id, string estado)
     {
         var espacio = _espacioDALC.ObtenerPorId(id)
-            ?? throw new Exception("Espacio no encontrado.");
+                      ?? throw new Exception("Espacio no encontrado.");
         _espacioDALC.ActualizarEstado(id, estado);
+    }
+
+    public void Actualizar(EspacioBE espacio)
+    {
+        if (espacio.HoraCierre <= espacio.HoraApertura)
+            throw new Exception("La hora de cierre debe ser mayor a la hora de apertura.");
+
+        var espacioExistente = _espacioDALC.ObtenerPorId(espacio.Id)
+                               ?? throw new Exception("Espacio no encontrado.");
+
+        _espacioDALC.Actualizar(espacio);
     }
 }

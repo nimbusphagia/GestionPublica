@@ -77,6 +77,7 @@ public class AdministradorController : Controller
         ViewData["Title"] = "Reservas aprobadas";
         ViewData["Active"] = "reservas";
         var reservas = _reservaBC.ObtenerAprobadas();
+        System.Diagnostics.Debug.WriteLine($"Reservas aprobadas: {reservas.Count}");
         var tipos = _tipoActividadDALC.ObtenerTodos();
         var usuarios = _usuarioBC.ObtenerTodos();
         ViewBag.Tipos = tipos.ToDictionary(t => t.Id, t => t.Nombre);

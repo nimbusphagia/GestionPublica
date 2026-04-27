@@ -66,6 +66,22 @@ public class SuperadminController : Controller
         return RedirectToAction("Espacios");
     }
 
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult EditarEspacio(EspacioBE espacio)
+    {
+        try
+        {
+            _espacioBC.Actualizar(espacio);
+        }
+        catch (Exception ex)
+        {
+            TempData["Error"] = ex.Message;
+        }
+
+        return RedirectToAction("Espacios");
+    }
+
     public IActionResult Instalaciones(int idEspacio)
     {
         ViewData["Title"] = "Instalaciones";
