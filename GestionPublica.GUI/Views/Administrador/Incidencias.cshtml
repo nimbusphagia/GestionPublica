@@ -34,7 +34,7 @@
                 <tr>
                     <td>@(usuarios != null && usuarios.ContainsKey(r.IdUsuario) ? usuarios[r.IdUsuario] : "—")</td>
                     <td>@r.FechaUso.ToString("dd/MM/yyyy")</td>
-                    <td>@r.HoraInicio.ToString(@"hh\:mm") — @r.HoraFin.ToString(@"hh\:mm")</td>
+                    <td>@r.HoraInicio.ToString(@"hh\:mm") - @r.HoraFin.ToString(@"hh\:mm")</td>
                     <td>
                         <button class="btn btn-warning"
                             onclick="abrirModalIncidencia(@r.Id)">

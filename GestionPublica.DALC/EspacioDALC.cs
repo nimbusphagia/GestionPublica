@@ -29,8 +29,7 @@ public class EspacioDALC
         cmd.Parameters.AddWithValue("@Id", id);
 
         using var reader = cmd.ExecuteReader();
-        if (reader.Read()) return MapearEspacio(reader);
-        return null;
+        return reader.Read() ? MapearEspacio(reader) : null;
     }
 
     public List<EspacioBE> ObtenerTodos()

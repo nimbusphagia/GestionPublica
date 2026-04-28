@@ -17,7 +17,6 @@ public class SuperadminController : Controller
 
     public IActionResult Index()
     {
-        ViewData["Title"] = "Dashboard";
         ViewData["Active"] = "dashboard";
         ViewBag.TotalEspacios = _espacioBC.ObtenerTodos().Count;
         ViewBag.TotalUsuarios = _usuarioBC.ObtenerTodos().Count;
@@ -28,7 +27,6 @@ public class SuperadminController : Controller
 
     public IActionResult Espacios()
     {
-        ViewData["Title"] = "Gestión de Espacios";
         ViewData["Active"] = "espacios";
         var espacios = _espacioBC.ObtenerTodos();
         return View(espacios);
@@ -84,7 +82,6 @@ public class SuperadminController : Controller
 
     public IActionResult Instalaciones(int idEspacio)
     {
-        ViewData["Title"] = "Instalaciones";
         ViewData["Active"] = "espacios";
         var espacio = _espacioBC.ObtenerPorId(idEspacio);
         var instalaciones = _instalacionBC.ObtenerPorEspacio(idEspacio);
@@ -128,7 +125,6 @@ public class SuperadminController : Controller
 
     public IActionResult Penalidades()
     {
-        ViewData["Title"] = "Gestión de Penalidades";
         ViewData["Active"] = "penalidades";
         var penalidades = _penalidadBC.ObtenerTodas();
         var usuarios = _usuarioBC.ObtenerTodos();
@@ -155,7 +151,6 @@ public class SuperadminController : Controller
 
     public IActionResult Usuarios()
     {
-        ViewData["Title"] = "Gestión de Usuarios";
         ViewData["Active"] = "usuarios";
         var usuarios = _usuarioBC.ObtenerTodos();
         return View(usuarios);

@@ -35,10 +35,10 @@
             <tr>
                 <td>@e.Nombre</td>
                 <td>@e.Distrito</td>
-                <td>@e.HoraApertura.ToString(@"hh\:mm") — @e.HoraCierre.ToString(@"hh\:mm")</td>
+                <td>@e.HoraApertura.ToString(@"hh\:mm") - @e.HoraCierre.ToString(@"hh\:mm")</td>
                 <td><span class="badge badge-@e.Estado">@e.Estado</span></td>
-                <td style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                    <a href="/Superadmin/Instalaciones?idEspacio=@e.Id" class="btn btn-secondary">Instalaciones</a>
+                <td class="table-actions">
+                    <a href="/Superadmin/Instalaciones?idEspacio=@e.Id" class="btn btn-primary">Instalaciones</a>
                     <button class="btn btn-secondary"
                             onclick="abrirModalEditar(@e.Id, '@e.Nombre', '@e.Direccion', '@e.Distrito',
                             '@(e.Descripcion ?? "")',
@@ -46,33 +46,18 @@
                             '@e.HoraCierre.ToString(@"hh\:mm")')">
                         Editar
                     </button>
-                    @if (e.Estado != "activo")
-                    {
-                        <form method="post" action="/Superadmin/ActualizarEstadoEspacio">
-                            @Html.AntiForgeryToken()
-                            <input type="hidden" name="id" value="@e.Id"/>
-                            <input type="hidden" name="estado" value="activo"/>
-                            <button type="submit" class="btn btn-success">Activar</button>
-                        </form>
-                    }
-                    @if (e.Estado != "mantenimiento")
-                    {
-                        <form method="post" action="/Superadmin/ActualizarEstadoEspacio">
-                            @Html.AntiForgeryToken()
-                            <input type="hidden" name="id" value="@e.Id"/>
-                            <input type="hidden" name="estado" value="mantenimiento"/>
-                            <button type="submit" class="btn btn-warning">Mantenimiento</button>
-                        </form>
-                    }
-                    @if (e.Estado != "cerrado")
-                    {
-                        <form method="post" action="/Superadmin/ActualizarEstadoEspacio">
-                            @Html.AntiForgeryToken()
-                            <input type="hidden" name="id" value="@e.Id"/>
-                            <input type="hidden" name="estado" value="cerrado"/>
-                            <button type="submit" class="btn btn-danger">Cerrar</button>
-                        </form>
-                    }
+                    <form method="post" action="/Superadmin/ActualizarEstadoEspacio" id="form-estado-@e.Id">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="id" value="@e.Id"/>
+                        <select name="estado" class="select-estado"
+                                onchange="document.getElementById('form-estado-@e.Id').submit()">
+                            <option value="activo" @(e.Estado == "activo" ? "selected" : "")>Activo</option>
+                            <option value="mantenimiento" @(e.Estado == "mantenimiento" ? "selected" : "")>
+                                Mantenimiento
+                            </option>
+                            <option value="cerrado" @(e.Estado == "cerrado" ? "selected" : "")>Cerrado</option>
+                        </select>
+                    </form>
                 </td>
             </tr>
         }

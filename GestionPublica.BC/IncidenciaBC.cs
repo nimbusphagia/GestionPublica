@@ -18,25 +18,23 @@ public class IncidenciaBC
         if (reserva.Estado != "finalizada")
             throw new Exception("Solo se pueden registrar incidencias en reservas finalizadas.");
 
-        int idIncidencia = _incidenciaDALC.Insertar(incidencia);
+        var idIncidencia = _incidenciaDALC.Insertar(incidencia);
 
-        int totalIncidencias = _incidenciaDALC.ContarIncidenciasPorUsuario(reserva.IdUsuario);
+        var totalIncidencias = _incidenciaDALC.ContarIncidenciasPorUsuario(reserva.IdUsuario);
 
-        if (totalIncidencias >= 2)
+        if (totalIncidencias < 2) return;
+        var penalidad = new PenalidadBE
         {
-            var penalidad = new PenalidadBE
-            {
-                IdUsuario = reserva.IdUsuario,
-                IdIncidencia = idIncidencia,
-                FechaInicio = DateTime.Now,
-                FechaFin = DateTime.Now.AddDays(15),
-                Motivo = $"Bloqueo automático por acumular {totalIncidencias} incidencias.",
-                Estado = "activa"
-            };
+            IdUsuario = reserva.IdUsuario,
+            IdIncidencia = idIncidencia,
+            FechaInicio = DateTime.Now,
+            FechaFin = DateTime.Now.AddDays(15),
+            Motivo = $"Bloqueo automático por acumular {totalIncidencias} incidencias.",
+            Estado = "activa"
+        };
 
-            _penalidadDALC.Insertar(penalidad);
-            _usuarioDALC.ActualizarEstado(reserva.IdUsuario, "bloqueado");
-        }
+        _penalidadDALC.Insertar(penalidad);
+        _usuarioDALC.ActualizarEstado(reserva.IdUsuario, "bloqueado");
     }
 
     public List<IncidenciaBE> ObtenerPorUsuario(int idUsuario)

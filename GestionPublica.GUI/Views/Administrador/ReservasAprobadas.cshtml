@@ -39,7 +39,7 @@ var usuarios = ViewBag.Usuarios as Dictionary<int, string>;
             <td>@(usuarios != null && usuarios.ContainsKey(r.IdUsuario) ? usuarios[r.IdUsuario] : "—")</td>
             <td>@(tipos != null && tipos.ContainsKey(r.IdTipoActividad) ? tipos[r.IdTipoActividad] : "—")</td>
             <td>@r.FechaUso.ToString("dd/MM/yyyy")</td>
-            <td>@r.HoraInicio.ToString(@"hh\:mm") — @r.HoraFin.ToString(@"hh\:mm")</td>
+            <td>@r.HoraInicio.ToString(@"hh\:mm") - @r.HoraFin.ToString(@"hh\:mm")</td>
             <td>
                 @if (yaTermino)
                 {

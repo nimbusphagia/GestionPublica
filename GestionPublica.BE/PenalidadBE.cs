@@ -8,7 +8,7 @@ public class PenalidadBE
     public DateTime FechaInicio { get; set; }
     public DateTime FechaFin { get; set; }          
     public string Motivo { get; set; }
-    public string Estado { get; set; }               // [activa, levantada]
+    public string Estado { get; set; }               
     public int? IdAdminQueLevanta { get; set; }      
     public DateTime? FechaLevantamiento { get; set; } 
 }

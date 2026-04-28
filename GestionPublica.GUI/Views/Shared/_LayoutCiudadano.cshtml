@@ -1,3 +1,4 @@
+@using System.Security.Claims
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -24,7 +25,7 @@
         </a>
     </div>
     <div class="navbar-user">
-        <span>@User.Identity.Name</span>
+        <span>@User.Identity.Name @User.FindFirst(ClaimTypes.Surname)?.Value</span>
         <form method="post" action="/Auth/Logout">
             @Html.AntiForgeryToken()
             <button type="submit" class="btn-logout">Cerrar sesión</button>

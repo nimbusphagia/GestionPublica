@@ -9,6 +9,6 @@ public class EspacioBE
     public string Descripcion { get; set; }
     public TimeSpan HoraApertura { get; set; }
     public TimeSpan HoraCierre { get; set; }
-    public string Estado { get; set; }      // [activo, mantenimiento, cerrado]
+    public string Estado { get; set; }    
 }
 

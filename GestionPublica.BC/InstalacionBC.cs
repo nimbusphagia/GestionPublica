@@ -33,10 +33,9 @@ public class InstalacionBC
 
     public List<InstalacionBE> ObtenerDisponiblesPorFecha(DateTime fecha)
     {
-        if (fecha.Date < DateTime.Today)
-            throw new Exception("La fecha de consulta no puede ser en el pasado.");
-
-        return _instalacionDALC.ObtenerDisponiblesPorFecha(fecha);
+        return fecha.Date < DateTime.Today
+            ? throw new Exception("La fecha de consulta no puede ser en el pasado.")
+            : _instalacionDALC.ObtenerDisponiblesPorFecha(fecha);
     }
 
     public void ActualizarEstado(int id, string estado)

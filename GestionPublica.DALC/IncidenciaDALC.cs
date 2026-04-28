@@ -29,8 +29,7 @@ public class IncidenciaDALC
         cmd.Parameters.AddWithValue("@Id", id);
 
         using var reader = cmd.ExecuteReader();
-        if (reader.Read()) return MapearIncidencia(reader);
-        return null;
+        return reader.Read() ? MapearIncidencia(reader) : null;
     }
 
     public List<IncidenciaBE> ObtenerPorUsuario(int idUsuario)

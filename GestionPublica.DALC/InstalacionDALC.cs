@@ -29,8 +29,7 @@ public class InstalacionDALC
         cmd.Parameters.AddWithValue("@Id", id);
 
         using var reader = cmd.ExecuteReader();
-        if (reader.Read()) return MapearInstalacion(reader);
-        return null;
+        return reader.Read() ? MapearInstalacion(reader) : null;
     }
 
     public List<InstalacionBE> ObtenerPorEspacio(int idEspacio)

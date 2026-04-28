@@ -1,3 +1,4 @@
+@using System.Security.Claims
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,38 +8,43 @@
     <link rel="stylesheet" href="~/css/admin.css"/>
 </head>
 <body>
-    <aside class="sidebar">
-        <div class="sidebar-brand">
-            <div class="system-name">GestionPublica</div>
-            <div class="role-label">Panel Administrador</div>
+<aside class="sidebar">
+    <div class="sidebar-brand">
+        <div class="system-name">GestionPublica</div>
+        <div class="role-label">Panel Administrador</div>
+    </div>
+    <nav class="sidebar-nav">
+        <a href="/Administrador/Index"
+           class="nav-item @(ViewData["Active"]?.ToString() == "dashboard" ? "active" : "")">
+            Dashboard
+        </a>
+        <a href="/Administrador/Solicitudes"
+           class="nav-item @(ViewData["Active"]?.ToString() == "solicitudes" ? "active" : "")">
+            Solicitudes
+        </a>
+        <a href="/Administrador/ReservasAprobadas"
+           class="nav-item @(ViewData["Active"]?.ToString() == "reservas" ? "active" : "")">
+            Reservas aprobadas
+        </a>
+        <a href="/Administrador/Incidencias"
+           class="nav-item @(ViewData["Active"]?.ToString() == "incidencias" ? "active" : "")">
+            Incidencias
+        </a>
+    </nav>
+    <div class="sidebar-footer">
+        <div class="sidebar-user">
+            Sesión iniciada como
+            <span>@User.Identity.Name @User.FindFirst(ClaimTypes.Surname)?.Value</span>
         </div>
-        <nav class="sidebar-nav">
-            <a href="/Administrador/Index" class="nav-item @(ViewData["Active"]?.ToString() == "dashboard" ? "active" : "")">
-                 Dashboard
-            </a>
-            <a href="/Administrador/Solicitudes" class="nav-item @(ViewData["Active"]?.ToString() == "solicitudes" ? "active" : "")">
-                Solicitudes
-            </a>
-            <a href="/Administrador/ReservasAprobadas" class="nav-item @(ViewData["Active"]?.ToString() == "reservas" ? "active" : "")">
-                Reservas aprobadas
-            </a>
-            <a href="/Administrador/Incidencias" class="nav-item @(ViewData["Active"]?.ToString() == "incidencias" ? "active" : "")">
-                Incidencias
-            </a>
-        </nav>
-        <div class="sidebar-footer">
-            <div class="sidebar-user">
-                Sesión iniciada como<span>@User.Identity.Name</span>
-            </div>
-            <form method="post" action="/Auth/Logout">
-                @Html.AntiForgeryToken()
-                <button type="submit" class="btn-logout">Cerrar sesión</button>
-            </form>
-        </div>
-    </aside>
-    <main class="main-content">
-        @RenderBody()
-    </main>
-    @RenderSection("Scripts", required: false)
+        <form method="post" action="/Auth/Logout">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn-logout">Cerrar sesión</button>
+        </form>
+    </div>
+</aside>
+<main class="main-content">
+    @RenderBody()
+</main>
+@RenderSection("Scripts", required: false)
 </body>
 </html>

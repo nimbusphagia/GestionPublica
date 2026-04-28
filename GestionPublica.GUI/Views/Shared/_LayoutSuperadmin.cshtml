@@ -1,3 +1,4 @@
+@using System.Security.Claims
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,7 +10,7 @@
 <body>
 <aside class="sidebar">
     <div class="sidebar-brand">
-        <div class="system-name">GestionPublica</div>
+        <div class="system-name">Gestion Publica</div>
         <div class="role-label">Panel Superadmin</div>
     </div>
     <nav class="sidebar-nav">
@@ -29,7 +30,8 @@
     </nav>
     <div class="sidebar-footer">
         <div class="sidebar-user">
-            Sesión iniciada como<span>@User.Identity.Name</span>
+            Sesión iniciada como
+            <span>@User.Identity.Name @User.FindFirst(ClaimTypes.Surname)?.Value</span>
         </div>
         <form method="post" action="/Auth/Logout">
             @Html.AntiForgeryToken()

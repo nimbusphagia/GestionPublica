@@ -21,7 +21,6 @@ public class CiudadanoController : Controller
 
     public IActionResult Index()
     {
-        ViewData["Title"] = "Inicio";
         ViewData["Active"] = "dashboard";
         var reservas = _reservaBC.ObtenerPorUsuario(GetUsuarioId());
         ViewBag.TotalReservas = reservas.Count;
@@ -33,28 +32,25 @@ public class CiudadanoController : Controller
 
     public IActionResult BuscarInstalaciones(DateTime? fecha)
     {
-        ViewData["Title"] = "Buscar instalaciones";
         ViewData["Active"] = "buscar";
         ViewBag.Fecha = fecha?.ToString("yyyy-MM-dd") ?? DateTime.Today.AddDays(1).ToString("yyyy-MM-dd");
         ViewBag.Tipos = _tipoInstalacionDALC.ObtenerTodos();
 
-        if (fecha.HasValue)
+        if (!fecha.HasValue) return View();
+        try
         {
-            try
-            {
-                var instalaciones = _instalacionBC.ObtenerDisponiblesPorFecha(fecha.Value);
-                var espacios = _espacioBC.ObtenerActivos()
-                    .ToDictionary(e => e.Id, e => e);
-                var tipos = _tipoInstalacionDALC.ObtenerTodos()
-                    .ToDictionary(t => t.Id, t => t.Nombre);
-                ViewBag.Instalaciones = instalaciones;
-                ViewBag.Espacios = espacios;
-                ViewBag.TiposDict = tipos;
-            }
-            catch (Exception ex)
-            {
-                ViewBag.Error = ex.Message;
-            }
+            var instalaciones = _instalacionBC.ObtenerDisponiblesPorFecha(fecha.Value);
+            var espacios = _espacioBC.ObtenerActivos()
+                .ToDictionary(e => e.Id, e => e);
+            var tipos = _tipoInstalacionDALC.ObtenerTodos()
+                .ToDictionary(t => t.Id, t => t.Nombre);
+            ViewBag.Instalaciones = instalaciones;
+            ViewBag.Espacios = espacios;
+            ViewBag.TiposDict = tipos;
+        }
+        catch (Exception ex)
+        {
+            ViewBag.Error = ex.Message;
         }
 
         return View();
@@ -62,7 +58,6 @@ public class CiudadanoController : Controller
 
     public IActionResult NuevaReserva(int idInstalacion, string fecha)
     {
-        ViewData["Title"] = "Nueva reserva";
         ViewData["Active"] = "buscar";
 
         try
@@ -114,7 +109,6 @@ public class CiudadanoController : Controller
 
     public IActionResult MisReservas()
     {
-        ViewData["Title"] = "Mis reservas";
         ViewData["Active"] = "reservas";
         var reservas = _reservaBC.ObtenerPorUsuario(GetUsuarioId());
         var tipos = _tipoActividadDALC.ObtenerTodos()

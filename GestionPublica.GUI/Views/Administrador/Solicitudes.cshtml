@@ -38,7 +38,7 @@
                     <td>@(usuarios != null && usuarios.ContainsKey(r.IdUsuario) ? usuarios[r.IdUsuario] : "—")</td>
                     <td>@(tipos != null && tipos.ContainsKey(r.IdTipoActividad) ? tipos[r.IdTipoActividad] : "—")</td>
                     <td>@r.FechaUso.ToString("dd/MM/yyyy")</td>
-                    <td>@r.HoraInicio.ToString(@"hh\:mm") — @r.HoraFin.ToString(@"hh\:mm")</td>
+                    <td>@r.HoraInicio.ToString(@"hh\:mm") / @r.HoraFin.ToString(@"hh\:mm")</td>
                     <td>@r.DescActividad</td>
                     <td style="display: flex; gap: 0.5rem;">
                         <form method="post" action="/Administrador/Aprobar">

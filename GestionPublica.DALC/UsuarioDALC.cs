@@ -30,8 +30,7 @@ public class UsuarioDALC
         cmd.Parameters.AddWithValue("@Id", id);
 
         using var reader = cmd.ExecuteReader();
-        if (reader.Read()) return MapearUsuario(reader);
-        return null;
+        return reader.Read() ? MapearUsuario(reader) : null;
     }
 
     public UsuarioBE ObtenerPorCorreo(string correo)
@@ -41,8 +40,7 @@ public class UsuarioDALC
         cmd.Parameters.AddWithValue("@Correo", correo);
 
         using var reader = cmd.ExecuteReader();
-        if (reader.Read()) return MapearUsuario(reader);
-        return null;
+        return reader.Read() ? MapearUsuario(reader) : null;
     }
 
     public List<UsuarioBE> ObtenerTodos()

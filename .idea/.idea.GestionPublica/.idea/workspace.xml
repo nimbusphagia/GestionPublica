@@ -16,12 +16,39 @@
   <component name="ChangeListManager">
     <list default="true" id="5af2ebb5-7218-4e37-bd53-f2c39f45bb61" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.GestionPublica/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GestionPublica/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPublica.BC/EspacioBC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.BC/EspacioBC.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.BC/IncidenciaBC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.BC/IncidenciaBC.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.BC/InstalacionBC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.BC/InstalacionBC.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.BE/EspacioBE.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.BE/EspacioBE.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.BE/IncidenciaBE.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.BE/IncidenciaBE.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.BE/InstalacionBE.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.BE/InstalacionBE.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.BE/PenalidadBE.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.BE/PenalidadBE.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.BE/ReservaBE.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.BE/ReservaBE.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.BE/UsuarioBE.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.BE/UsuarioBE.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GestionPublica.DALC/EspacioDALC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.DALC/EspacioDALC.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.DALC/IncidenciaDALC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.DALC/IncidenciaDALC.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.DALC/InstalacionDALC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.DALC/InstalacionDALC.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.DALC/PenalidadDALC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.DALC/PenalidadDALC.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.DALC/ReservaDALC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.DALC/ReservaDALC.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.DALC/UsuarioDALC.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.DALC/UsuarioDALC.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GestionPublica.GUI/Controllers/AdministradorController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/Controllers/AdministradorController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.GUI/Controllers/CiudadanoController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/Controllers/CiudadanoController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GestionPublica.GUI/Controllers/SuperadminController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/Controllers/SuperadminController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GestionPublica.GUI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.GUI/Views/Administrador/Incidencias.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/Views/Administrador/Incidencias.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.GUI/Views/Administrador/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/Views/Administrador/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.GUI/Views/Administrador/ReservasAprobadas.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/Views/Administrador/ReservasAprobadas.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.GUI/Views/Administrador/Solicitudes.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/Views/Administrador/Solicitudes.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.GUI/Views/Auth/Login.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/Views/Auth/Login.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.GUI/Views/Auth/Registro.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/Views/Auth/Registro.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.GUI/Views/Ciudadano/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/Views/Ciudadano/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.GUI/Views/Shared/_LayoutAdmin.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/Views/Shared/_LayoutAdmin.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.GUI/Views/Shared/_LayoutCiudadano.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/Views/Shared/_LayoutCiudadano.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.GUI/Views/Shared/_LayoutSuperadmin.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/Views/Shared/_LayoutSuperadmin.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GestionPublica.GUI/Views/Superadmin/Espacios.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/Views/Superadmin/Espacios.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.GUI/Views/Superadmin/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/Views/Superadmin/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.GUI/Views/Superadmin/Instalaciones.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/Views/Superadmin/Instalaciones.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.GUI/wwwroot/css/admin.css" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/wwwroot/css/admin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.GUI/wwwroot/css/auth.css" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/wwwroot/css/auth.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GestionPublica.GUI/wwwroot/css/ciudadano.css" beforeDir="false" afterPath="$PROJECT_DIR$/GestionPublica.GUI/wwwroot/css/ciudadano.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,29 +99,29 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.GestionPublic.GUI: http.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "cidr.known.project.marker": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "full.screen.before.presentation.mode": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/ignacio/RiderProjects/T2SOLMachucaGutierrez",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.GestionPublic.GUI: http.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/ignacio/RiderProjects/T2SOLMachucaGutierrez&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.GestionPublic.GUI: http">
     <configuration name="GestionPublic.GUI: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/GestionPublica.GUI/GestionPublica.GUI.csproj" />
@@ -151,7 +178,8 @@
       <workItem from="1777154575779" duration="954000" />
       <workItem from="1777155615532" duration="104000" />
       <workItem from="1777254415842" duration="3607000" />
-      <workItem from="1777320646801" duration="4849000" />
+      <workItem from="1777320646801" duration="5957000" />
+      <workItem from="1777335711310" duration="10686000" />
     </task>
     <servers />
   </component>

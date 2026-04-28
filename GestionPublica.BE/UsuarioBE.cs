@@ -9,7 +9,7 @@ public class UsuarioBE
     public string PasswordHash { get; set; }
     public string Telefono { get; set; }
     public DateTime FechaRegistro { get; set; }
-    public string Estado { get; set; }      // [activo , bloqueado]
-    public string Rol { get; set; }         // [ciudadano, administrador, superadmin]
+    public string Estado { get; set; }      
+    public string Rol { get; set; }         
 }
 

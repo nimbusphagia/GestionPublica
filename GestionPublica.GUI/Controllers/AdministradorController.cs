@@ -20,7 +20,6 @@ public class AdministradorController : Controller
 
     public IActionResult Index()
     {
-        ViewData["Title"] = "Dashboard";
         ViewData["Active"] = "dashboard";
         ViewBag.TotalPendientes = _reservaBC.ObtenerPendientes().Count;
         ViewBag.TotalAprobadas = _reservaBC.ObtenerAprobadas().Count;
@@ -30,7 +29,6 @@ public class AdministradorController : Controller
 
     public IActionResult Solicitudes()
     {
-        ViewData["Title"] = "Solicitudes pendientes";
         ViewData["Active"] = "solicitudes";
         var solicitudes = _reservaBC.ObtenerPendientes();
         var tipos = _tipoActividadDALC.ObtenerTodos();
@@ -74,7 +72,6 @@ public class AdministradorController : Controller
 
     public IActionResult ReservasAprobadas()
     {
-        ViewData["Title"] = "Reservas aprobadas";
         ViewData["Active"] = "reservas";
         var reservas = _reservaBC.ObtenerAprobadas();
         System.Diagnostics.Debug.WriteLine($"Reservas aprobadas: {reservas.Count}");
@@ -103,7 +100,6 @@ public class AdministradorController : Controller
 
     public IActionResult Incidencias()
     {
-        ViewData["Title"] = "Incidencias";
         ViewData["Active"] = "incidencias";
         var finalizadasSinIncidencia = _reservaBC.ObtenerFinalizadasSinIncidencia();
         var usuarios = _usuarioBC.ObtenerTodos();

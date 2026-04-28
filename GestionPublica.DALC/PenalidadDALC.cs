@@ -29,8 +29,7 @@ public class PenalidadDALC
         cmd.Parameters.AddWithValue("@IdUsuario", idUsuario);
 
         using var reader = cmd.ExecuteReader();
-        if (reader.Read()) return MapearPenalidad(reader);
-        return null;
+        return reader.Read() ? MapearPenalidad(reader) : null;
     }
 
     public List<PenalidadBE> ObtenerTodas()

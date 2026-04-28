@@ -31,8 +31,7 @@ public class ReservaDALC
         cmd.Parameters.AddWithValue("@Id", id);
 
         using var reader = cmd.ExecuteReader();
-        if (reader.Read()) return MapearReserva(reader);
-        return null;
+        return reader.Read() ? MapearReserva(reader) : null;
     }
 
     public List<ReservaBE> ObtenerPorUsuario(int idUsuario)

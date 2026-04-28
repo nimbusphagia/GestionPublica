@@ -44,7 +44,7 @@
                 <td>@tipoNombre</td>
                 <td>@i.Capacidad personas</td>
                 <td><span class="badge badge-@i.Estado">@i.Estado</span></td>
-                <td style="display: flex; gap: 0.5rem;">
+                <td style="display: flex; gap: 0.5rem; justify-content: center">
                     @if (i.Estado != "disponible")
                     {
                         <form method="post" action="/Superadmin/ActualizarEstadoInstalacion">
